@@ -1,0 +1,45 @@
+# +-------------------------------------------------+
+# | MQ CHANNEL MONITOR - IMPORTANT - DO NOT DISABLE |
+# +-------------------------------------------------+
+
+## ANYTHING WITH A DOUBLE HASH IS A LIVE COMMAND IN THE ORIGINAL MQM LIVE CRON FILE !!!!!!!
+
+##  * * * * * cd /var/ifsmq/bin/; /usr/bin/python channel_monitor.py >> /var/log/ifsmq/channel_monitor.log 2>&1
+
+# +--------------------------+
+# | IFS PROCESSES:           |
+# +--------------------------+
+##  */5 * * * * cd /var/ifsmq/bin/;/usr/bin/python stock_in_ingest.py >> /var/log/ifsmq/stock_in_ingest.log 2>&1
+##  */5 * * * * cd /var/ifsmq/bin/;/usr/bin/python stock_in_process.py >> /var/log/ifsmq/stock_in_process.log 2>&1
+##  */2 * * * * cd /var/ifsmq/bin/;/usr/bin/python price_in_ingest.py >> /var/log/ifsmq/price_in_ingest.log 2>&1
+##  */2 * * * * cd /var/ifsmq/bin/;/usr/bin/python price_in_process.py >> /var/log/ifsmq/price_in_process.log 2>&1
+##  */5 * * * * cd /var/ifsmq/bin/;/usr/bin/python ipscnc_out.py >> /var/log/ifsmq/ipscnc_out.log 2>&1
+##  */5 * * * * cd /var/ifsmq/bin/;/usr/bin/python ipsq_out_customer_deletions.py >> /var/log/ifsmq/ipscnc_out_customer_deletions.log 2>&1
+##  */2 * * * * cd /var/ifsmq/bin/;/usr/bin/python cat_in_ingest.py >> /var/log/ifsmq/cat_in_ingest.log 2>&1
+##  */2 * * * * cd /var/ifsmq/bin/;/usr/bin/python cat_in_process.py >> /var/log/ifsmq/cat_in_process.log 2>&1
+##  */5 * * * * cd /var/ifsmq/bin/;/usr/bin/python ipsq_out_order_exports.py >> /var/log/ifsmq/ipsq_out_order_exports.log 2>&1
+##  */5 * * * * cd /var/ifsmq/bin/;/usr/bin/python redprod_out.py >> /var/log/ifsmq/redprod_out.log 2>&1
+##  00 01 * * * cd /var/ifsmq/bin; /usr/bin/python wat_ordebk_out.py >> /var/log/ifsmq/wat_ordebk_out.log 2>&1
+
+# +----------------------------------------+
+# | IFS LOG CLEARDOWN:                     |
+# +----------------------------------------+
+##  59 23 * * * cd /var/log/ifsmq; tail -100000 channel_monitor.log > channel_monitor.log.2; >channel_monitor.log
+##  59 23 * * * cd /var/log/ifsmq; tail -100000 stock_in_ingest.log > stock_in_ingest.log.2; >stock_in_ingest.log
+##  59 23 * * * cd /var/log/ifsmq; tail -100000 stock_in_process.log > stock_in_process.log.2; >stock_in_process.log
+##  59 23 * * * cd /var/log/ifsmq; tail -100000 price_in_ingest.log > price_in_ingest.log.2; >price_in_ingest.log
+##  59 23 * * * cd /var/log/ifsmq; tail -100000 price_in_process.log > price_in_process.log.2; >price_in_process.log
+##  59 23 * * * cd /var/log/ifsmq; tail -100000 ipscnc_out.log > ipscnc_out.log.2; >ipscnc_out.log
+##  59 23 * * * cd /var/log/ifsmq; tail -100000 cat_in_ingest.log > cat_in_ingest.log.2; >cat_in_ingest.log
+##  59 23 * * * cd /var/log/ifsmq; tail -100000 cat_in_process.log > cat_in_process.log.2; >cat_in_process.log
+##  59 23 * * * cd /var/log/ifsmq; tail -100000 ipsq_out_order_exports.log > ipsq_out_order_exports.log.2; >ipsq_out_order_exports.log
+##  59 23 * * * cd /var/log/ifsmq; tail -100000 redprod_out.log > redprod_out.log.2; >redprod_out.log
+##  59 23 * * * cd /var/log/ifsmq; tail -100000 wat_ordebk_out.log > wat_ordebk_out.log.2; >wat_ordebk_out.log
+
+
+# +-----------------------------------------------------------------------------------+
+# | USE IN EXCEPTIONAL CIRCUMSTANCES ONLY - THIS WILL CAUSE *PERMANENT* MQ DATA LOSS! |
+# +-----------------------------------------------------------------------------------+
+#/5 * * * * cd /var/ifsmq/bin/;/usr/bin/python flush.stock.in.py
+#/5 * * * * cd /var/ifsmq/bin/;/usr/bin/python flush.price.in.py
+#/5 * * * * cd /var/ifsmq/bin/;/usr/bin/python flush.cat.in.py

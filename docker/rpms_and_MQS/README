@@ -1,0 +1,5 @@
+This directory would contain all the MQ serires ans license, but is left empty on purpose to save room and hide license. It would of contained :-
+MQSeriesClient-7.1.0-3.x86_64.rpm   MQSeriesSamples-7.1.0-3.x86_64.rpm
+MQSeriesJava-7.1.0-3.x86_64.rpm     MQSeriesSDK-7.1.0-3.x86_64.rpm
+MQSeriesJRE-7.1.0-3.x86_64.rpm      MQSeriesServer-7.1.0-3.x86_64.rpm
+MQSeriesRuntime-7.1.0-3.x86_64.rpm  WMQ_7.1.0.3_TRIAL_LNX_X86_64_ML.tar.gz
